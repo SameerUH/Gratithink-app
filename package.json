@@ -14,9 +14,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0",
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
@@ -29,10 +31,15 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "vite": "^6.3.5",
     "vite-plugin-pwa": "^1.0.0"
 =======
     "vite": "^6.3.5"
 >>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
+=======
+    "vite": "^6.3.5",
+    "vite-plugin-pwa": "^1.0.0"
+>>>>>>> b56e71c (Finished the app!!!)
   }
 }

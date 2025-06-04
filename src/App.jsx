@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -293,6 +294,25 @@ function App() {
     </div>
 >>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
   )
+=======
+import { Routes, Route } from 'react-router-dom'; // Correct import
+import Home from './pages/Home';
+import Performance from './pages/Performance';
+import Entries from './pages/Entries';
+import Start from './pages/Start';
+import NotFound from './pages/NotFound';
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Start />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/performance" element={<Performance />} />
+      <Route path="/entries" element={<Entries />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+>>>>>>> b56e71c (Finished the app!!!)
 }
 
-export default App
+export default App;
