@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
       </div>
 =======
 import { useState } from 'react'
+=======
+import { useEffect, useState } from 'react'
+>>>>>>> 18145b8 (I've added a highlight drop down menu to my app.)
 
 function App() {
   const [journal, setJournal] = useState([])
@@ -40,12 +44,25 @@ function App() {
   const [question2, setQuestion2] = useState('')
   const [question3, setQuestion3] = useState('')
   const [question4, setQuestion4] = useState('')
-  const [question5, setQuestion5] = useState('')
+  const [question5, setQuestion5] = useState([])
+  const [time, setTime] = useState(null)
+
+  const [showDropdown, setShowDropdown] = useState(false)
+
+  const highlightOptions = [
+  { label: "Coding", value: "coding" },
+  { label: "Writing", value: "writing" },
+  { label: "Exam Practice", value: "exam_practice" },
+  { label: "Took Breaks", value: "took_breaks" },
+  { label: "Asked a Teacher", value: "teacher" },
+  { label: "Studied in Group", value: "study_group" },
+]
 
   const journalJSX = journal.map((entry, index) => {
-    const date = newDate(entry.time)
+    const date = new Date(entry.time)
     const dateString = date.toDateString()
     const timeString = date.toLocaleTimeString()
+
     return (
       <div key = {index} className='m-2 p-2 w-100'>
         <div className='text-md text-gray-500'>{dateString}: {timeString}</div>
@@ -53,18 +70,27 @@ function App() {
         <div className='text-lg'>{entry.question2}</div>
         <div className='text-lg'>{entry.question3}</div>
         <div className='text-lg'>{entry.question4}</div>
+<<<<<<< HEAD
         <div className='text-lg'>{entry.question5}</div>
 >>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
+=======
+        <div className='text-lg'>{Array.isArray(entry.question5) ? entry.question5.join(',') : entry.question5}</div>
+>>>>>>> 18145b8 (I've added a highlight drop down menu to my app.)
       </div>
     )
   })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 18145b8 (I've added a highlight drop down menu to my app.)
   useEffect(() => {
     const storedJournal = localStorage.getItem('journal')
     if (storedJournal) {
       setJournal(JSON.parse(storedJournal))
     }
+<<<<<<< HEAD
    })
 
   const handleText = function(event) {
@@ -163,6 +189,9 @@ function App() {
     {journalJSX}
    </div>
 =======
+=======
+  }, [])
+>>>>>>> 18145b8 (I've added a highlight drop down menu to my app.)
   const handleQuestion1 = function(event) {
     setQuestion1(event.target.value)
   }
@@ -180,11 +209,39 @@ function App() {
   }
 
   const handleQuestion5 = function(event) {
-    setQuestion5(event.target.value)
+    const value = event.target.value
+    const isChecked = event.target.checked
+
+    if (isChecked) {
+      setQuestion5(prev => [...prev, value])
+    } else {
+      setQuestion5(prev => prev.filter(item => item !== value))
+    }
+  }
+
+  const updateJournal = function() {
+    let timestamp = (time) ? time: Date.now()
+    let newEntry = {time: timestamp, question1: question1, question2: question2, question3: question3, question4: question4, question5: question5}
+
+    let newJournal = [newEntry, ...journal]
+    newJournal.sort((a, b) => b.time - a.time)
+    setJournal(newJournal)
+    localStorage.setItem('journal', JSON.stringify(newJournal))
+
+    setQuestion1('')
+    setQuestion2('')
+    setQuestion3('')
+    setQuestion4('')
+    setQuestion5('')
+    setTime(null)
+  }
+
+  const toggleDropdown = () => {
+    setShowDropdown(prev => !prev)
   }
 
   return (
-    <div class = "Questions" className='p-2 flex flex-col items-center'>
+    <div className='p-2 flex flex-col items-center'>
       Question 1:
       <textarea className='m-2 p-2 w-200 border-rounded border'
       value={question1}
@@ -204,16 +261,34 @@ function App() {
       />
 
       Question 4:
-      <textarea className='m-2 p-2 w-200 border-rounded border'
-      value={question4}
-      onChange={ (event) => handleQuestion4(event)}
+        <textarea className='m-2 p-2 w-200 border-rounded border'
+        value={question4}
+        onChange={ (event) => handleQuestion4(event)}
       />
 
       Question 5:
-      <textarea className='m-2 p-2 w-200 border-rounded border'
-      value={question5}
-      onChange={ (event) => handleQuestion5(event)}
-      />
+      <button className='p-2 bg-gray-200 rounded border w-200 text-left'
+      onClick={toggleDropdown}>
+      {question5.length > 0 ? question5.join(', ') : 'Select highlight'}
+      </button>
+
+      {showDropdown && (
+        highlightOptions.map(option => (
+          <label key={option.value} className='block'>
+            <input
+              type="checkbox"
+              value={option.value}
+              checked={question5.includes(option.value)}
+              onChange={(event) => handleQuestion5(event)}
+            />
+            {option.label}
+          </label>
+      )))}
+      
+
+      <button className='m-2 p-2 w-50 bg-green-500 text-white rounded'
+      onClick={() => updateJournal()}
+      title = "Add a journal entry">{time ? "Update":"Add"}</button>
       {journalJSX}
     </div>
 >>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
