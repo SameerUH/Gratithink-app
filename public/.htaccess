@@ -1,6 +1,7 @@
 <ifModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /gratithink/app/
+    RewriteRule ^favicon-assets/(.*)$ favicon-assets/$1 [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule (.*) index.html [QSA,L]
