@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
+<<<<<<< HEAD
 import { VitePWA} from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
@@ -27,4 +28,10 @@ export default defineConfig({
     }
   })],
   base: '/week10'
+=======
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+>>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
 })

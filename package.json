@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "vite-project",
+=======
+  "name": "gratithink",
+>>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,7 +28,11 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+<<<<<<< HEAD
     "vite": "^6.3.5",
     "vite-plugin-pwa": "^1.0.0"
+=======
+    "vite": "^6.3.5"
+>>>>>>> 966bbc0 (Went through the workshops for React and TailwindCSS so starting to make the app now.)
   }
 }
